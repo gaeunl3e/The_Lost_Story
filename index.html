@@ -130,7 +130,14 @@
         }
         .ui-layer:active { transform: scale(0.9); }
         
-        .ui-top { top: 60px; left: 25px; font-size: 28px; line-height: 1; }
+        /* [수정됨] X 버튼 (.ui-top)
+           - intense-neon-pulse 애니메이션 추가하여 외부 광선 효과 적용
+        */
+        .ui-top { 
+            top: 60px; left: 25px; 
+            font-size: 28px; line-height: 1; 
+            animation: intense-neon-pulse 2s ease-in-out infinite;
+        }
         
         .ui-side { 
             top: 60px; right: 25px; 
