@@ -1,0 +1,703 @@
+{\rtf1\ansi\ansicpg949\cocoartf2822
+\cocoatextscaling0\cocoaplatform0{\fonttbl\f0\fswiss\fcharset0 Helvetica;}
+{\colortbl;\red255\green255\blue255;}
+{\*\expandedcolortbl;;}
+\paperw11900\paperh16840\margl1440\margr1440\vieww11520\viewh8400\viewkind0
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+
+\f0\fs24 \cf0 <!DOCTYPE html>\
+<html lang="ko">\
+<head>\
+    <meta charset="UTF-8">\
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">\
+    <title>Narrative of Nothingness - Final Version 07</title>\
+    <link rel="preconnect" href="https://fonts.googleapis.com">\
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>\
+    <link href="https://fonts.googleapis.com/css2?family=Gowun+Batang:wght@400;700&family=Inter:wght@300;400;700;900&family=Nanum+Pen+Script&family=Noto+Sans+KR:wght@100;300;400;500;700;900&family=Noto+Serif+KR:wght@300;400;700;900&display=swap" rel="stylesheet">\
+    \
+    <style>\
+        /* === [\uc0\u51204 \u52404  \u47112 \u51060 \u50500 \u50883 ] === */\
+        body \{\
+            background-color: #000;\
+            margin: 0; padding: 0;\
+            width: 100vw; height: 100vh;\
+            position: relative; \
+            overflow: hidden;\
+            font-family: 'Inter', "Noto Sans KR", sans-serif;\
+            user-select: none;\
+        \}\
+\
+        /* [\uc0\u51204 \u52404  \u54868 \u47732  \u45432 \u51060 \u51592  \u50724 \u48260 \u47112 \u51060 ] */\
+        #full-static-overlay \{\
+            position: fixed;\
+            top: 0; left: 0; width: 100vw; height: 100vh;\
+            z-index: 9997;\
+            opacity: 0;\
+            pointer-events: none;\
+            background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyBAMAAADsEZWjAAAAG1BMVEUAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACaaa4UAAAACHRSTlMABA4XHiQrMHTUIAAAAJVJREFUOMvt1jsKwkAQhOFZff9T6G1EX0A0NgfpLYKVa1jYBcTsv8gM7C/yKjP8YQ41t082V/d0e/m1O9fH5ZSNdF57d2xYc2p1z56e2lM7tq9Wz9pXj1pWb9rXq3a1s961r3U1q160r0btaldt2teqWj2rR62rHdure9aufdWcWl2z5+6p7W3P/m03n2v39+4f/wBFH53WnZIAAAAASUVORK5CYII=');\
+            transition: opacity 0.1s;\
+        \}\
+        .static-active \{\
+            opacity: 0.3 !important;\
+            animation: static-shift 0.2s infinite steps(4);\
+        \}\
+        @keyframes static-shift \{\
+            0% \{ background-position: 0 0; \}\
+            100% \{ background-position: 100px 100px; \}\
+        \}\
+\
+        /* [2. \uc0\u50500 \u51060 \u54256  \u51116 \u45212 \u47928 \u51088  \u49828 \u53440 \u51068  \u44221 \u44256 \u52285 ] */\
+        #global-alert \{\
+            position: fixed;\
+            top: 50%; left: 50%;\
+            transform: translate(-50%, -50%) scale(0.95);\
+            width: 90%; max-width: 520px;\
+            background-color: rgba(255, 255, 255, 0.98);\
+            border-radius: 28px;\
+            box-shadow: 0 15px 50px rgba(0,0,0,0.7);\
+            padding: 30px;\
+            box-sizing: border-box;\
+            display: flex; flex-direction: row; align-items: flex-start; gap: 20px;\
+            z-index: 9999;\
+            opacity: 0; pointer-events: none;\
+            transition: opacity 0.05s, transform 0.05s;\
+        \}\
+        .alert-active \{\
+            opacity: 1 !important;\
+            transform: translate(-50%, -50%) scale(1) !important;\
+        \}\
+        .alert-icon \{\
+            flex-shrink: 0; width: 50px; height: 50px;\
+            background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M30 5L5 50H55L30 5Z' fill='%23FFCC00' stroke='%23E6B800' stroke-width='2' stroke-linejoin='round'/%3E%3Cpath d='M30 20V35' stroke='black' stroke-width='4' stroke-linecap='round'/%3E%3Ccircle cx='30' cy='43' r='2.5' fill='black'/%3E%3C/svg%3E");\
+            background-repeat: no-repeat; background-position: center; background-size: contain;\
+        \}\
+        .alert-content \{ flex: 1; display: flex; flex-direction: column; gap: 6px; \}\
+        .alert-header \{ display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 4px; \}\
+        .alert-title \{ font-size: 19px; font-weight: 800; color: #000; letter-spacing: -0.5px; \}\
+        .alert-time \{ font-size: 15px; color: #8E8E93; \}\
+        .alert-body \{ font-size: 18px; color: #111; line-height: 1.4; letter-spacing: -0.3px; word-break: keep-all; font-weight: 500; \}\
+\
+\
+        /* === [\uc0\u51473 \u50521  \u48176 \u52824  \u48143  \u48176 \u44221  \u53581 \u49828 \u53944 ] === */\
+\
+        /* [\uc0\u55092 \u45824 \u54256  \u52968 \u53580 \u51060 \u45320  (\u51473 \u50521  \u48176 \u52824 )] */\
+        #phone-container \{\
+            position: fixed; /* \uc0\u54868 \u47732  \u51473 \u50521  \u44256 \u51221  */\
+            top: 50%; left: 50%;\
+            transform: translate(-50%, -50%);\
+            z-index: 100; /* \uc0\u53581 \u49828 \u53944 \u48372 \u45796  \u50948 \u50640  \u48176 \u52824  */\
+            height: auto;\
+            border: none;\
+            background: none;\
+        \}\
+\
+        /* [\uc0\u48176 \u44221  \u53581 \u49828 \u53944  \u52968 \u53580 \u51060 \u45320  (\u51204 \u52404  \u54868 \u47732 )] */\
+        #background-text-zone \{\
+            position: absolute;\
+            top: 0; left: 0;\
+            width: 100%; height: 100%;\
+            padding: 40px;\
+            box-sizing: border-box;\
+            background-color: #000;\
+            z-index: 1; /* \uc0\u44032 \u51109  \u46244 \u50640  \u48176 \u52824  */\
+            overflow: hidden; \
+            display: flex;\
+            align-items: flex-start;\
+            justify-content: flex-start;\
+        \}\
+\
+        /* [\uc0\u50500 \u51060 \u54256  \u54532 \u47112 \u51076 ] */\
+        .iphone-frame \{\
+            position: relative;\
+            width: 393px; height: 852px;\
+            background-color: #000;\
+            border-radius: 55px;\
+            box-shadow: 0 0 0 4px #333, 0 0 60px rgba(255,255,255,0.05);\
+            overflow: hidden;\
+            max-height: 90vh;\
+            max-width: 90vw;\
+        \}\
+        .dynamic-island \{\
+            position: absolute;\
+            top: 11px; left: 50%; transform: translateX(-50%);\
+            width: 126px; height: 37px;\
+            background: black; border-radius: 20px; z-index: 100;\
+        \}\
+        #photo-display \{\
+            width: 100%; height: 100%;\
+            background-size: cover; background-position: center;\
+            transition: opacity 0.05s; \
+            filter: contrast(1.1);\
+        \}\
+\
+        /* [\uc0\u50500 \u51060 \u54256  UI \u48260 \u53948 \u46308 ] */\
+        .ui-layer \{ \
+            position: absolute; color: white; z-index: 50; \
+            cursor: pointer; transition: transform 0.1s;\
+        \}\
+        .ui-layer:active \{ transform: scale(0.9); \}\
+        \
+        .ui-top \{ top: 60px; left: 25px; font-size: 28px; line-height: 1; \}\
+        \
+        .ui-side \{ \
+            top: 60px; right: 25px; \
+            display: flex; flex-direction: column; gap: 25px; \
+            align-items: center; \
+            font-size: 24px; line-height: 1;\
+            /* \uc0\u44592 \u48376  \u44536 \u47548 \u51088  \u50630 \u50544  (\u50528 \u45768 \u47700 \u51060 \u49496 \u50640 \u49436  \u51228 \u50612 ) */\
+        \}\
+\
+        .ui-bottom \{ \
+            bottom: 40px; width: 100%; padding: 0 25px; \
+            box-sizing: border-box; display: flex; gap: 10px; pointer-events: none; \
+        \}\
+\
+        /* === [\uc0\u44053 \u47141 \u54620  \u49884 \u44033 \u51201  \u50976 \u46020  \u50528 \u45768 \u47700 \u51060 \u49496 ] === */\
+        \
+        /* 1. \uc0\u50724 \u47480 \u51901  \u50500 \u51060 \u53080 : \u44053 \u54620  \u45348 \u50728  \u44544 \u47196 \u50864  + \u49900 \u51109 \u48149 \u46041  */\
+        @keyframes intense-neon-pulse \{\
+            0% \{ \
+                opacity: 0.7; \
+                transform: scale(1);\
+                text-shadow: 0 0 5px rgba(255, 255, 255, 0.5); \
+            \}\
+            50% \{ \
+                opacity: 1; \
+                transform: scale(1.25); /* \uc0\u53356 \u44592  \u48320 \u54868  \u45824 \u54253  \u54869 \u45824  */\
+                text-shadow: \
+                    0 0 10px rgba(255, 255, 255, 1),\
+                    0 0 20px rgba(255, 255, 255, 0.8),\
+                    0 0 30px rgba(255, 255, 255, 0.6); /* 3\uc0\u45800  \u48156 \u44305  */\
+            \}\
+            100% \{ \
+                opacity: 0.7; \
+                transform: scale(1);\
+                text-shadow: 0 0 5px rgba(255, 255, 255, 0.5); \
+            \}\
+        \}\
+\
+        /* 2. \uc0\u54616 \u45800  \u48260 \u53948 : \u53580 \u46160 \u47532  \u48156 \u44305  + \u48176 \u44221  \u51216 \u47736  */\
+        @keyframes intense-btn-glow \{\
+            0% \{ \
+                transform: scale(1);\
+                border-color: rgba(255,255,255,0.3);\
+                box-shadow: 0 0 0 rgba(255,255,255,0);\
+            \}\
+            50% \{ \
+                transform: scale(1.05); /* \uc0\u48260 \u53948 \u51060  \u53888 \u50612 \u45208 \u50724 \u45716  \u45712 \u45196  */\
+                border-color: rgba(255,255,255,1);\
+                box-shadow: \
+                    0 0 15px rgba(255,255,255,0.6), /* \uc0\u50808 \u48512  \u44305 \u52292  */\
+                    inset 0 0 10px rgba(255,255,255,0.3); /* \uc0\u45236 \u48512  \u44305 \u52292  */\
+            \}\
+            100% \{ \
+                transform: scale(1);\
+                border-color: rgba(255,255,255,0.3);\
+                box-shadow: 0 0 0 rgba(255,255,255,0);\
+            \}\
+        \}\
+\
+        /* \uc0\u50724 \u47480 \u51901  \u50500 \u51060 \u53080 \u46308 \u50640  \u51068 \u44292  \u51201 \u50857  (\u46041 \u44592 \u54868 \u46108  \u47532 \u46316 ) */\
+        .ui-side span \{\
+            display: inline-block;\
+            /* 2\uc0\u52488  \u51452 \u44592 \u47196  \u48736 \u47476 \u44172 , \u47784 \u46304  \u50500 \u51060 \u53080 \u51060  \u46041 \u49884 \u50640  \u44636 \u48737 \u51076  */\
+            animation: intense-neon-pulse 2s ease-in-out infinite; \
+        \}\
+\
+        .pill-btn \{\
+            flex: 1; padding: 12px 0; \
+            border-radius: 30px; text-align: center; font-size: 14px; font-weight: 600;\
+            pointer-events: auto; cursor: pointer;\
+            \
+            /* \uc0\u48260 \u53948  \u50528 \u45768 \u47700 \u51060 \u49496  \u51201 \u50857  */\
+            animation: intense-btn-glow 2s ease-in-out infinite;\
+        \}\
+\
+        /* \uc0\u45796 \u53356  \u48260 \u53948  \u49828 \u53440 \u51068  */\
+        .pill-dark \{ \
+            background: rgba(0,0,0,0.5); /* \uc0\u48176 \u44221 \u51012  \u51328  \u45908  \u50612 \u46177 \u44172  \u54616 \u50668  \u48731 \u51012  \u44053 \u51312  */\
+            border: 2px solid rgba(255,255,255,0.3); /* \uc0\u53580 \u46160 \u47532  \u46160 \u44749 \u44172  */\
+            backdrop-filter: blur(5px); \
+            color: white;\
+        \}\
+        \
+        /* \uc0\u46972 \u51060 \u53944  \u48260 \u53948  \u49828 \u53440 \u51068  */\
+        .pill-light \{ \
+            background: white; color: black; \
+            border: 2px solid white; \
+            /* \uc0\u46972 \u51060 \u53944  \u48260 \u53948 \u51008  \u55152 \u49353 \u51060 \u46972  \u44536 \u47548 \u51088 \u47484  \u44160 \u44172  \u51452 \u44144 \u45208 , \
+               \uc0\u50724 \u55176 \u47140  \u50669 \u49444 \u51201 \u51004 \u47196  \u53356 \u44592  \u48320 \u54868 \u50640  \u51665 \u51473 \u54644 \u50556  \u51096  \u48372 \u51076  */\
+            animation: light-btn-pulse 2s ease-in-out infinite; \
+        \}\
+\
+        @keyframes light-btn-pulse \{\
+            0% \{ transform: scale(1); opacity: 0.8; box-shadow: 0 0 0 rgba(255,255,255,0); \}\
+            50% \{ transform: scale(1.05); opacity: 1; box-shadow: 0 0 25px rgba(255,255,255,0.9); \}\
+            100% \{ transform: scale(1); opacity: 0.8; box-shadow: 0 0 0 rgba(255,255,255,0); \}\
+        \}\
+\
+\
+        /* [\uc0\u53440 \u51060 \u54609  \u53581 \u49828 \u53944  \u49828 \u53440 \u51068  & \u48288 \u47532 \u50640 \u51060 \u49496  \u53364 \u47000 \u49828 ] */\
+        #typing-area \{\
+            font-family: 'Inter', sans-serif;\
+            font-size: 18pt; \
+            line-height: 1.5; \
+            color: rgba(255, 255, 255, 0.85);\
+            word-break: break-all; \
+            white-space: pre-wrap;\
+            width: 100%; height: 100%;\
+            display: flex;\
+            flex-direction: column;\
+            justify-content: flex-end; \
+        \}\
+        \
+        /* \uc0\u54256 \u53944  \u54056 \u48128 \u47532  \u48288 \u47532 \u50640 \u51060 \u49496  */\
+        .font-inter \{ font-family: 'Inter', sans-serif; \}\
+        .font-noto-sans \{ font-family: 'Noto Sans KR', sans-serif; \}\
+        .font-noto-serif \{ font-family: 'Noto Serif KR', serif; \}\
+        .font-nanum-pen \{ font-family: 'Nanum Pen Script', cursive; \}\
+        .font-gowun \{ font-family: 'Gowun Batang', serif; \}\
+\
+        /* \uc0\u54256 \u53944  \u46160 \u44760  \u48288 \u47532 \u50640 \u51060 \u49496  */\
+        .weight-light \{ font-weight: 300; \}\
+        .weight-normal \{ font-weight: 400; \}\
+        .weight-bold \{ font-weight: 700; \}\
+\
+        /* \uc0\u54256 \u53944  \u49828 \u53440 \u51068  \u48288 \u47532 \u50640 \u51060 \u49496  */\
+        .style-italic \{ font-style: italic; \}\
+\
+        .cursor \{\
+            display: inline-block; width: 2px; height: 24px; \
+            background: white; margin-left: 2px; vertical-align: sub;\
+            animation: blink 0.8s infinite;\
+        \}\
+        @keyframes blink \{ 0%,100%\{opacity:1\} 50%\{opacity:0\} \}\
+\
+        /* \uc0\u49884 \u51089  \u54868 \u47732  */\
+        #overlay \{\
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%;\
+            background: black; z-index: 10000;\
+            display: flex; flex-direction: column; justify-content: center; align-items: center;\
+            cursor: pointer;\
+        \}\
+        #overlay h1 \{ color: white; margin-bottom: 10px; font-size: 20px; font-weight: 400;\}\
+        #overlay p \{ color: #666; font-size: 14px; \}\
+    </style>\
+</head>\
+<body>\
+    <div id="full-static-overlay"></div>\
+    <div id="global-alert">\
+        <div class="alert-icon"></div>\
+        <div class="alert-content">\
+            <div class="alert-header">\
+                <span class="alert-title">\uc0\u49436 \u49324 \u51032  \u50948 \u44592 </span>\
+                <span class="alert-time">\uc0\u51648 \u44552 </span>\
+            </div>\
+            <div class="alert-body" id="alert-message-text">\
+                </div>\
+        </div>\
+    </div>\
+    \
+    <div id="overlay" onclick="startApp()">\
+        <h1>\uc0\u49324 \u46972 \u51652  \u49828 \u53664 \u47532 </h1>    \
+        <p>Click to Start</p>\
+    </div>\
+\
+    <section id="phone-container">\
+        <div class="iphone-frame">\
+            <div class="dynamic-island"></div>\
+            <div id="photo-display"></div>\
+            \
+            <div class="ui-layer ui-top" onclick="triggerAlert('x')">\uc0\u10005 </div>\
+            <div class="ui-layer ui-side">\
+                <span onclick="triggerAlert('t')">T</span>\
+                <span onclick="triggerAlert('draw')">\uc0\u9998 </span>\
+                <span onclick="triggerAlert('emoji')">\uc0\u9786 </span>\
+                <span onclick="triggerAlert('music')">\uc0\u9835 </span>\
+                <span onclick="triggerAlert('sparkle')">\uc0\u10024 </span>\
+                <span>\uc0\u8744 </span>\
+            </div>\
+            <div class="ui-layer ui-bottom">\
+                <div class="pill-btn pill-dark" onclick="triggerAlert('bf')">B.F Only \uc0\u9733 </div>\
+                <div class="pill-btn pill-light" onclick="triggerAlert('send')">Send To \uc0\u9654 </div>\
+            </div>\
+        </div>\
+    </section>\
+\
+    <section id="background-text-zone">\
+        <div id="typing-area">\
+            <span id="text-output"></span><span class="cursor"></span>\
+        </div>\
+    </section>\
+\
+    <script>\
+        const rawImages = [\
+            "https://i.ibb.co/fzM56DRX/airplane.png",\
+            "https://i.ibb.co/R447kCpD/11.jpg",\
+            "https://i.ibb.co/998ZjsMX/meow1.jpg",\
+            "https://i.ibb.co/xq8w1nMW/story2.jpg",\
+            "https://i.ibb.co/Dfd56L66/shopping.jpg",\
+            "https://i.ibb.co/6cNh8CY3/13.jpg",\
+            "https://i.ibb.co/N6M8Yw2Z/image.jpg",\
+            "https://i.ibb.co/XkrVFcWC/story7.jpg",\
+            "https://i.ibb.co/rf0xKgzM/2025-12-02-5-41.jpg",\
+            "https://i.ibb.co/j9jyQ163/story5.jpg",\
+            "https://i.ibb.co/3mdPgYsG/spotify.jpg",\
+            "https://i.ibb.co/5hphm7JY/2025-12-02-3-28-32.png",\
+            "https://i.ibb.co/Z6SgSvXz/Group-43.jpg",\
+            "https://i.ibb.co/60Vxkg3S/concert.jpg",\
+            "https://i.ibb.co/zwngZf7/2025-12-02-6-02-00.jpg",\
+            "https://i.ibb.co/4wBXR67X/2025-12-02-6-01-34.jpg",\
+            "https://i.ibb.co/gsYjKfj/tennis.jpg",\
+            "https://i.ibb.co/ZpfzLTRF/Instagram-dariamorna.jpg",\
+            "https://i.ibb.co/qY1YgZjZ/story3.jpg",\
+            "https://i.ibb.co/60B28xPZ/meow2.jpg",\
+            "https://i.ibb.co/GvGvWgMm/8.jpg",\
+            "https://i.ibb.co/60f66bYg/16.jpg",\
+            "https://i.ibb.co/SGGTcMz/2025-12-02-7-10-54.jpg",\
+            "https://i.ibb.co/DDn77ySv/2025-12-02-7-12-12.jpg",\
+            "https://i.ibb.co/rK5szSKH/2025-12-02-7-12-34.jpg",\
+            "https://i.ibb.co/6RHXcs31/2025-12-02-7-13-15.jpg",\
+            "https://i.ibb.co/VYJ3CZKk/2025-12-02-5-42-00.jpg",\
+            "https://i.ibb.co/svsFF9vD/2025-12-03-12-15-49.jpg",\
+            "https://i.ibb.co/0gDhzwz/2025-12-03-12-17-47.jpg",\
+            "https://i.ibb.co/hx7XTNc6/2025-12-03-12-17-30.jpg",\
+            "https://i.ibb.co/hx7XTNc6/2025-12-03-12-17-30.jpg",\
+            "https://i.ibb.co/3yVNLxYM/2025-12-03-12-18-11.jpg",\
+            "https://i.ibb.co/p6Bdqn0y/2025-12-03-12-18-36.jpg",\
+            "https://i.ibb.co/LdW68Tqq/2025-12-03-12-18-43.jpg",\
+            "https://i.ibb.co/RpmSvXNy/2025-12-03-12-18-00.jpg",\
+            "https://i.ibb.co/p6fLsnz3/2025-12-03-12-18-56.jpg",\
+            "https://i.ibb.co/tp9wpML0/2025-12-03-12-19-02.jpg",\
+            "https://i.ibb.co/QVWxLHq/2025-12-03-12-19-09.jpg",\
+            "https://i.ibb.co/6JcwbhpZ/Group-44.jpg",\
+            "https://i.ibb.co/gLyjg43B/9.jpg",\
+            "https://i.ibb.co/8DNGmnWM/14.jpg",\
+            "https://i.ibb.co/jvsLgp9h/15.jpg",\
+            "https://i.ibb.co/FbbYPj0T/17.jpg",\
+            "https://i.ibb.co/bjLRnysV/Group-45.jpg",\
+            "https://i.ibb.co/XfPZbd51/Group-46.jpg",\
+            "https://i.ibb.co/n8qJ71n3/167b4bf78bbadf1270dbe5915b83e447.jpg",\
+            "https://i.ibb.co/nqXpL3vh/Group-49.jpg",\
+            "https://i.ibb.co/twqQgnqM/12.jpg",\
+            "https://i.ibb.co/xKXz78zL/b61402c5e5264bbbbd115869cdd14df2.jpg",\
+            "https://i.ibb.co/4w0CDrpy/2025-12-02-7-11-18.jpg",\
+            "https://i.ibb.co/rK5szSKH/2025-12-02-7-12-34.jpg",\
+            "https://i.ibb.co/mF5F4C1w/2025-12-03-2-48-52.jpg",\
+            "https://i.ibb.co/gFzm232R/2025-12-03-2-49-00.jpg",\
+            "https://i.ibb.co/JwpNptW5/43c180a643f966b1d05e9002a264a925.jpg",\
+            "https://i.ibb.co/S4TW38HW/899f5d1f9993340012891413f818bd75.jpg",\
+            "https://i.ibb.co/VYtHwTgn/13363fd5ce459f6b57eb66876b23bc8f.jpg",\
+            "https://i.ibb.co/dJbKK9qZ/image.png",\
+            "https://i.ibb.co/vvqMgrXL/2025-12-03-4-26-28.png",\
+            "https://i.ibb.co/v6jJvg6M/fc1496877eb63f5342b9c03095b65547.jpg",\
+            "https://i.ibb.co/BRRXbdF/1e43f9fcb5847964908a257f20ad83d1.jpg",\
+            "https://i.ibb.co/rKNmD7K9/outfit1.jpg",\
+            "https://i.ibb.co/rRK7WLx3/1.jpg",\
+            "https://i.ibb.co/jmg0KXF/2.jpg",\
+            "https://i.ibb.co/SDMLK6Hg/3.jpg",\
+            "https://i.ibb.co/mF2z5fT6/ad15f0a291de2ecf5c788e95e8ade169.jpg",\
+            "https://i.ibb.co/Rk92D5QX/bd4d290a4e6255c905878b5e6afe33be.jpg",\
+            "https://i.ibb.co/99VxQWzD/00581edbb5d621310b9594045e75a350.jpg",\
+            "https://i.ibb.co/d47HLq5F/506b25a8c375941657512c133b4abeeb.jpg",\
+            "https://i.ibb.co/xKSjYMgr/d48c31d504723bf020b0bd8ebc8e8cc9.jpg",\
+            "https://i.ibb.co/dw75Vsvy/b45c579463ecbce3f7d4133c4fb9092b.jpg",\
+            "https://i.ibb.co/yBfTvt3x/29515704c9e4e52a6f6a34a91a6a9f2e.jpg",\
+            "https://i.ibb.co/3wCyqmY/d1103cc6146d9445aa24d31264021667.jpg",\
+            "https://i.ibb.co/HTJTccrm/1dd0b40ff2b6357ed85e8607f770b66b.jpg",\
+            "https://i.ibb.co/Kc5CkWB6/a847b5c9bab8b994580b4b89fa8d14af.jpg",\
+            "https://i.ibb.co/3ydTWR3P/1.png",\
+            "https://i.ibb.co/x8KGGxy6/d71dfaaaf4052a64f2195b24cfb8e577.jpg",\
+            "https://i.ibb.co/LzJhKvdJ/550c8170e1ccdc50e02b15bf3ce6d856.jpg",\
+            "https://i.ibb.co/xSzBypRG/be683b5012b5f22951c801a01b872c66.jpg",\
+            "https://i.ibb.co/DPd99bxj/0eda807e370650b5e497a6903a834e09.jpg",\
+            "https://i.ibb.co/mCKTZ1Z1/57ed7b9a0a63583f76a98998e3500ed9.jpg",\
+            "https://i.ibb.co/21hTjM54/afb36bb3eb04804409532d23f72e7b8d.jpg",\
+            "https://i.ibb.co/Jjk6QJjr/ddda63a71b8a579e7c5fe28be6b01c56.jpg",\
+            "https://i.ibb.co/vKS56kJ/0b40bb2dccbac2c53409f11b0c508dbf.jpg",\
+            "https://i.ibb.co/B23tg2h7/4dd63c99c417256b034d5bc4e2143eea.jpg",\
+            "https://i.ibb.co/N69xWGqX/9fc5bfe3e29272810059578f40c18dc8.jpg",\
+            "https://i.ibb.co/dwx08qsR/12fb3ad4f02a07721a78a8e57d74ec08.jpg",\
+            "https://i.ibb.co/TqktSprd/57c8e56b3b2424c67ae634c47651d661.jpg",\
+            "https://i.ibb.co/TMX1hLRt/57ed7b9a0a63583f76a98998e3500ed9.jpg",\
+            "https://i.ibb.co/s96ztR5b/384b6519c95982019b376ed203002fa0.jpg",\
+            "https://i.ibb.co/RGHFNBNW/656e69de8132b7101ed92dd4bb7c0fb9.jpg",\
+            "https://i.ibb.co/qL9NL73M/33555e2f375f28d89162caf8375c0df0.jpg",\
+            "https://i.ibb.co/JFK1Qp83/62703e4be5d90045d18429cd4a8001bd.jpg",\
+            "https://i.ibb.co/C3cNQhrw/a59f5d5c20ce80f2fe77f9ca9153b521.jpg",\
+            "https://i.ibb.co/4ZWtjF3s/afb36bb3eb04804409532d23f72e7b8d.jpg",\
+            "https://i.ibb.co/HLyhZmCc/ddda63a71b8a579e7c5fe28be6b01c56.jpg",\
+            "https://i.ibb.co/HLyhZmCc/ddda63a71b8a579e7c5fe28be6b01c56.jpg",\
+            "https://i.ibb.co/zVBFmHBP/3f4695335c77e183d1474173736e6fab.jpg",\
+            "https://i.ibb.co/1GQYH65q/5bf0acd2d8c6481c36e29cbb3635b995.jpg",\
+            "https://i.ibb.co/7NkvRYHp/5c76ce2138b1e1e8baf6f918f6606fab.jpg",\
+            "https://i.ibb.co/9HGxFQY5/402dd984d7d786731b90e6f33b54361c.jpg",\
+            "https://i.ibb.co/KjRkqQPR/5258d509b35146ee637e6aea449b4e2d.jpg",\
+            "https://i.ibb.co/Y41rGv7J/37e7216f5930e55a6b91cf8acf731249.jpg",\
+            "https://i.ibb.co/yFy5ZWbS/0bcf5c51a4af951fcccb9c436d5fc4d1.jpg",\
+            "https://i.ibb.co/5X1fzf9C/d76b1f3c4610d2579cc7d25a140e46be.jpg",\
+            "https://i.ibb.co/nMWrbqG9/8667cada70d31fd7dbc7917690d54df9.jpg",\
+            "https://i.ibb.co/xqYNC3d8/2025-12-04-4-47-24.jpg",\
+            "https://i.ibb.co/DPPnpSTn/2025-12-04-4-46-52.jpg",\
+            "https://i.ibb.co/q3XwjswF/2025-12-04-4-44-38.jpg",\
+            "https://i.ibb.co/0jNSTN2p/2025-12-04-4-45-18.jpg",\
+            "https://i.ibb.co/FqxdN2Fb/9ccbeb9ad7cf0d86667d90a82fbeae50.jpg",\
+            "https://i.ibb.co/JwYkdCRF/947af190274dd6fa2a5c198c1e1e8ea7.jpg",\
+            "https://i.ibb.co/2105k4Xr/2025-12-04-4-43-06.jpg",\
+            "https://i.ibb.co/1J4gX3nt/2025-12-04-4-43-01.jpg",\
+            "https://i.ibb.co/hR32R1bG/2025-12-04-5-04-49.jpg",\
+            "https://i.ibb.co/nMdgsZRL/2025-12-04-5-01-28.jpg",\
+            "https://i.ibb.co/1G94STJ3/2025-12-04-5-01-52.jpg",\
+            "https://i.ibb.co/93HgJKjc/2025-12-04-5-02-42.jpg",\
+            "https://i.ibb.co/7JGxM0zf/2025-12-04-5-02-59.jpg",\
+            "https://i.ibb.co/TxtCh4bz/c31aa4c75e09aaeaacf44ac5c31d53b6.jpg",\
+            "https://i.ibb.co/Rkh0mcJW/e89a1ae0598051e322684ecc0c0267e7.jpg",\
+            "https://i.ibb.co/tMKmHMkh/e597ef6414ee25a96a83b5b87dc88ca7.jpg",\
+            "https://i.ibb.co/yckBQFhV/eda525d640576df1d308e575693eca15.jpg",\
+            "https://i.ibb.co/dszqWhQb/5a64e7d8f4d8207a06e909d45a3f5efc.jpg",\
+            "https://i.ibb.co/qMWmPm5t/b0f830383e9d69c3c3835bf3c0599a06.jpg",\
+            "https://i.ibb.co/zTVjNwJH/a60b1b8847feb23ae001ed2aeb1f65dd.jpg",\
+            "https://i.ibb.co/VpQwGPVX/4219668c3b585675f5b23a0db5c24127.jpg",\
+            "https://i.ibb.co/9HBQHDbv/2936407e5ba58ef405143a87a7ddefcd.jpg",\
+            "https://i.ibb.co/RTLbHZWq/1201eab9c7436458f5682a2025ebb16f.jpg",\
+            "https://i.ibb.co/ymZm5xSX/a86dd3e5f1227b7d8b506c0983c1fcd7.jpg",\
+            "https://i.ibb.co/Pv6444st/image-44.png",\
+            "https://i.ibb.co/XrxHW7Bd/e30d11b12f34d01918a0fa8f7c3d1dc9.jpg",\
+            "https://i.ibb.co/dJkFwwwn/4f62e9bad2a451f45860abaf63e10f21.jpg",\
+            "https://i.ibb.co/vCRnYHn2/6ddae8f8050988fd33a466d0921f1c54.jpg",\
+            "https://i.ibb.co/Y78tB0d3/59e80826161a83756589c65574fd46f5.jpg",\
+            "https://i.ibb.co/9HdgSZ33/bae838a0bb99ec79222038c594d53640.jpg",\
+            "https://i.ibb.co/239Cm3mT/be54b33751eb8460320383d6ff2e7285.jpg",\
+            "https://i.ibb.co/Mx5FxCC3/4da8724d00bbaf47bd64e21bd4914439.jpg",\
+            "https://i.ibb.co/TMdGqnTh/2025-12-15-11-49-17.png",\
+            "https://i.ibb.co/qMF18VL6/2025-12-15-11-38-34.png",\
+            "https://i.ibb.co/wNWFHKb3/2025-12-15-11-37-26.png",\
+            "https://i.ibb.co/0jmJhQr4/2025-12-15-11-35-37.png",\
+            "https://i.ibb.co/vCgFNgJH/2025-12-15-11-34-01.png",\
+            "https://i.ibb.co/vChgwKGz/2025-12-15-11-33-51.png",\
+            "https://i.ibb.co/xtd3G5GN/6e36ca48971ed28a7436a2134a03ea17.jpg",\
+            "https://i.ibb.co/0V8ZYrT9/72a0156d92ab18a028d827295bfb8582.jpg",\
+            "https://i.ibb.co/HDMjwt0L/8a276410dac2ed4647a8f670ca04a93f.jpg",\
+            "https://i.ibb.co/pvNDbNBx/b486e456c930d806d35ef03d7c90a8d0.jpg",\
+            "https://i.ibb.co/Kz78NHtp/f6f387f89cab0a1955840358c0101f5a.jpg",\
+            "https://i.ibb.co/4nWBf4z0/87966507e246c2e0c6eedd286cb3e149.jpg",\
+            "https://i.ibb.co/m55WVx3T/453d954e0b90ac8b3da26b41eedcd721.jpg",\
+            ""\
+        ];\
+        const images = rawImages.filter(url => url.length > 0);\
+        \
+        const words = \{\
+            adj: [\
+                "\uc0\u55120 \u47551 \u54620 ","\u47568 \u46972 \u48260 \u47536 ","\u44648 \u51652 ","\u55148 \u48120 \u54620 ","\u45217 \u51008 ","\u48708 \u50612 \u51080 \u45716 ","\u47924 \u45320 \u51652 ","\u50612 \u46160 \u50868 ","\u53804 \u47749 \u54620 ","\u49436 \u45720 \u54620 ",\
+                "\uc0\u53573  \u48712 ","\u48512 \u50976 \u54616 \u45716 ","\u48520 \u50756 \u51204 \u54620 ","\u51648 \u52828 ","\u51222 \u50612 \u51080 \u45716 ","\u55145 \u50612 \u51652 ","\u47680 \u50612 \u51652 ","\u49324 \u46972 \u51652 ","\u45916  \u47560 \u47480 ","\u44040 \u46972 \u51652 ",\
+                "\uc0\u45433 \u50500 \u45236 \u47536 ","\u50612 \u46356 \u50640 \u46020  \u50630 \u45716 ","\u47700 \u47560 \u47480 ","\u50872 \u53825 \u48520 \u53825 \u54620 ","\u48512 \u46300 \u47084 \u50868 ","\u52629 \u52629 \u54620 ","\u52264 \u44032 \u50868 ","\u45130 \u50612 \u51652 ","\u51060 \u44536 \u47084 \u51652 ",\
+                "\uc0\u50416 \u47084 \u51652 ","\u50612 \u49353 \u54620 ","\u51061 \u51648  \u50506 \u51008 ","\u51104 \u44596 ","\u44032 \u48316 \u50868 ","\u46028 \u50500 \u50724 \u51648  \u50506 \u45716 ","\u45231 \u49440 ","\u48708 \u53952 \u47536 ","\u45149 \u50630 \u45716 ","\u51312 \u50857 \u54620 ",\
+                "\uc0\u48148 \u49828 \u47084 \u51652 ","\u44277 \u54728 \u54620 ","\u50872 \u47532 \u45716 ","\u45573 \u45573 \u54620 ","\u49549 \u49325 \u51060 \u45716 ","\u48337 \u46304 ","\u47568 \u50630 \u45716 ","\u55145 \u45216 \u47532 \u45716 ","\u49548 \u46976 \u49828 \u47084 \u50868 ","\u51092 \u54841 \u54620 ",\
+                "\uc0\u55128 \u47084 \u44032 \u45716 ","\u48260 \u47140 \u51652 ","\u46244 \u53952 \u47536 ","\u47945 \u44060 \u51652 ","\u51104 \u51104 \u54620 ","\u55148 \u49100 \u50672 ","\u47924 \u49353 \u54620 ","\u50424 \u50424 \u54620 ","\u50836 \u46041 \u52824 \u45716 ","\u49436 \u53808 ",\
+                "\uc0\u48708 \u51221 \u54620 ","\u44732 \u51256 \u44032 \u45716 ","\u50872 \u47673 \u51060 \u45716 ","\u55128 \u47084 \u45236 \u47536 ","\u51092 \u49345  \u44057 \u51008 ","\u51082 \u54784 \u51652 ","\u50500 \u54536 ","\u46028 \u50672 \u54620 ","\u48264 \u51652 ","\u52840 \u47925 \u54616 \u45716 ",\
+                "\uc0\u54744 \u54620 ","\u49828 \u49328 \u54620 ","\u48512 \u51116 \u54620 ","\u48520 \u53804 \u47749 \u54620 ","\u50612 \u47480 \u44144 \u47532 \u45716 ","\u48520 \u44600 \u54620 ","\u51687 \u51008 ","\u45712 \u47536 ","\u55124 \u46308 \u47532 \u45716 ","\u50633 \u53020 \u51080 \u45716 ",\
+                "\uc0\u48712 \u50557 \u54620 ","\u49438 \u51064 ","\u46244 \u49438 \u51064 ","\u48512 \u50976 \u54620 ","\u44618 \u51008 ","\u50581 \u51008 ","\u54588 \u47196 \u54620 ","\u49885 \u50612 \u48260 \u47536 ","\u44040 \u54588  \u50630 \u45716 ","\u55124 \u51201  \u50630 \u45716 ",\
+                "\uc0\u44032 \u51676 \u51032 ","\u50948 \u53468 \u47196 \u50868 ","\u48708 \u54788 \u49892 \u51201 \u51064 ","\u49328 \u47564 \u54620 ","\u48708 \u53952 \u45824 \u45716 ","\u44732 \u51652 ","\u50612 \u49444 \u54536 ","\u51096 \u47536 ","\u44396 \u44200 \u51652 ","\u45916  \u51061 \u51008 ",\
+                "\uc0\u48512 \u47084 \u51652 ","\u47924 \u45924 \u45924 \u54620 ","\u55148 \u48120 \u54644 \u51652 ","\u54889 \u47049 \u54620 ","\u49436 \u44145 \u51060 \u45716 ","\u47693 \u46304 ","\u51900 \u44060 \u51652 ","\u52840 \u51204 \u46108 ","\u54728 \u44277 \u51032 ","\u47924 \u47141 \u54620 ",\
+                "\uc0\u49325 \u51008 ","\u47933 \u51008 ","\u53440 \u50724 \u47476 \u51648  \u50506 \u45716 ","\u49704 \u44200 \u51652 ","\u50693 \u51008 ","\u51312 \u44033 \u45212 ","\u51652 \u46041 \u54616 \u45716 ","\u55145 \u49100 \u47140 \u51652 ","\u47680 \u50612 \u51652 ","\u48148 \u47004 ",\
+                "\uc0\u47693 \u54620 ","\u50872 \u52965 \u54620 ","\u48520 \u44032 \u54644 \u54620 ","\u47581 \u49444 \u51060 \u45716 ","\u45927 \u50630 \u45716 ","\u50500 \u47140 \u50724 \u45716 ","\u55064 \u48156 \u49457 \u51032 ","\u51060 \u47492  \u50630 \u45716 ","\u50612 \u49688 \u49440 \u54620 ","\u45712 \u49832 \u54620 ",\
+                "\uc0\u48152 \u51677 \u51060 \u45716 ","\u44032 \u46972 \u50505 \u51008 ","\u55148 \u45124 \u47924 \u47112 \u54620 ","\u48264 \u51789 \u51060 \u45716 ","\u55120 \u53944 \u47084 \u51652 ","\u48120 \u45124 \u47084 \u50868 ","\u47924 \u49900 \u54620 ","\u52488 \u46972 \u54620 ","\u45927 \u51077 \u54784 \u51652 ","\u51648 \u50892 \u51652 ",\
+                "\uc0\u49556 \u51649 \u54620 ","\u44256 \u45800 \u54620 ","\u54217 \u48276 \u54620 ","\u48148 \u49244 ","\u50612 \u51228  \u44057 \u51008 ","\u51061 \u49689 \u54620 ","\u51221 \u51649 \u54620 ","\u48512 \u51313 \u54620 ","\u50612 \u50689 \u48512 \u50689 \u54620 ","\u54728 \u53448 \u54620 ",\
+                "\uc0\u48852 \u54620 ","\u49884 \u50896 \u54620 ","\u47924 \u45212 \u54620 ","\u54588 \u44260 \u54620 ","\u51648 \u47336 \u54620 ","\u44036 \u45800 \u54620 ","\u45800 \u45800 \u54620 ","\u45796 \u51221 \u54620 ","\u52285 \u54588 \u54620 ","\u44480 \u52270 \u51008 ",\
+                "\uc0\u48520 \u54200 \u54620 ","\u54775 \u44040 \u47532 \u45716 ","\u53804 \u48149 \u54620 ","\u49548 \u48149 \u54620 ","\u44984 \u48136 \u50630 \u45716 ","\u51089 \u51008 ","\u54217 \u49548 \u51032 ","\u46384 \u45128 \u54620 ","\u49324 \u49548 \u54620 ","\u47564 \u47564 \u54620 ",\
+                "\uc0\u46384 \u48516 \u54620 ","\u50612 \u51221 \u51809 \u54620 ","\u47924 \u45912 \u54620 ","\u52828 \u49689 \u54620 ","\u54200 \u50504 \u54620 ","\u51092 \u51092 \u54620 ","\u51652 \u51676  \u44057 \u51008 ","\u46385 \u46385 \u54620 ","\u48512 \u49892 \u54620 ","\u54728 \u49696 \u54620 ",\
+                "\uc0\u54616 \u50560 ","\u45432 \u46976 ","\u54392 \u47480 ","\u48744 \u44036 ","\u52488 \u47197 \u51032 ","\u51088 \u51096 \u54620 ","\u48372 \u53685 \u51032 ","\u49905 \u44144 \u50868 ","\u46384 \u45128 \u46384 \u45128 \u54620 ","\u47568 \u47536 ",\
+                "\uc0\u45800 \u51221 \u54620 ","\u48139 \u48139 \u54620 ","\u51725 \u54620 ","\u52489 \u52489 \u54620 ","\u54693 \u44592 \u47196 \u50868 ","\u51221 \u44040 \u54620 ","\u49688 \u51469 \u51008 ","\u54200 \u54620 ","\u49328 \u46907 \u54620 ","\u48157 \u51008 ",\
+                "\uc0\u49900 \u49900 \u54620 ","\u49905 \u44536 \u47084 \u50868 ","\u55124 \u54620 ","\u45208 \u47480 \u54620 ","\u50612 \u47532 \u49689 \u54620 ","\u51109 \u45212 \u49828 \u47084 \u50868 ","\u48148 \u48372  \u44057 \u51008 ","\u44984 \u48136 \u50630 \u45716 ","\u51201 \u45817 \u54620 ","\u49688 \u49345 \u54620 ",\
+                "\uc0\u54728 \u51204 \u54620 ","\u54392 \u49437 \u54620 ","\u54736 \u47105 \u54620 ","\u46041 \u44536 \u46976 ","\u44033 \u51652 ","\u50612 \u49688 \u49440 \u54616 \u44172  \u47680 \u51809 \u54620 ","\u45916 \u52965 \u54620 ","\u52236 \u49100 \u46319 \u54620 ","\u50612 \u47536 ","\u54217 \u51060 \u54620 ",\
+                "\uc0\u49556 \u51649 \u54616 \u51648 \u47564  \u47784 \u54840 \u54620 ","\u54217 \u48276 \u54616 \u51648 \u47564  \u51060 \u49345 \u54620 ","\u51068 \u49345 \u51201 \u51064 ","\u51652 \u51648 \u54620 ","\u48512 \u51313 \u54616 \u51648 \u47564  \u44316 \u52270 \u51008 ","\u48324  \u51032 \u48120  \u50630 \u45716 ",\
+                "\uc0\u47924 \u49900 \u54620  \u46319  \u46384 \u46907 \u54620 ","\u48324  \u49373 \u44033  \u50630 \u45716 ","\u44536 \u45285  \u44536 \u47088 ","\u49692 \u54620 ","\u44628 \u45140 \u54620 ","\u44284 \u54620 ","\u44256 \u50836 \u54616 \u44172  \u50883 \u44596 ","\u48512 \u45812 \u49828 \u47084 \u50868 ",\
+                "\uc0\u44032 \u48316 \u50892 \u51652 ","\u45804 \u53092 \u54620 ","\u51693 \u51684 \u54620 ","\u48148 \u49325 \u54620 ","\u48512 \u46300 \u47084 \u50892 \u51652 ","\u46384 \u46319 \u54620 ","\u52489 \u52489 \u54644 \u51652 ","\u50612 \u49444 \u54536  \u46319  \u49556 \u51649 \u54620 ","\u45924 \u45924 \u54620 ","\u54217 \u50728 \u54620 ",\
+                "\uc0\u50508 \u47582 \u51008 ","\u51109 \u45212 \u49828 \u47088 ","\u49688 \u51469 \u51008  \u46319 \u54620 ","\u54217 \u50728 \u54644 \u51652 ","\u44480 \u50668 \u50868 ","\u53805  \u53888 \u45716 ","\u51221 \u54869 \u54620 ","\u45824 \u52649 \u51032 ","\u47784 \u54840 \u54620 ","\u47924 \u49900 \u54620 ",\
+                "\uc0\u53804 \u47749 \u54620  \u46319 \u54620 ","\u51312 \u50857 \u54620  \u46319  \u49548 \u46976 \u49828 \u47084 \u50868 ","\u50612 \u51221 \u51809 \u54616 \u51648 \u47564  \u49556 \u51649 \u54620 ","\u50696 \u49345  \u44032 \u45733 \u54620 ","\u44049 \u51089 \u49828 \u47084 \u50892  \u48372 \u51060 \u45716 ","\u50612 \u46360 \u44032  \u49836 \u54536 ",\
+                "\uc0\u51328  \u51648 \u52828 ","\u44032 \u48316 \u50868  \u46319  \u47924 \u44144 \u50868 ","\u44263  \u49324 \u46972 \u51656  \u46319 \u54620 ","\u53805  \u45236 \u48201 \u45716 ","\u45576 \u52824  \u50630 \u45716 ","\u49548 \u49900 \u54620 ","\u53804 \u47749 \u54616 \u44172  \u49556 \u51649 \u54620 ","\u51008 \u44540 \u54620 ",\
+                "\uc0\u45804 \u50500 \u50724 \u47480 ","\u51312 \u44552  \u50500 \u49772 \u50868 ","\u48324 \u44144  \u50630 \u45716 ","\u48512 \u46300 \u47084 \u50912 \u45912 ","\u54200 \u50504 \u54644 \u51652 ","\u45812 \u45812 \u54620 ","\u49549 \u49325 \u51060 \u46319  \u51312 \u50857 \u54620 ","\u50620 \u46504 \u44208 \u51032 ","\u49556 \u51649 \u54616 \u44172  \u50883 \u44596 ",\
+                "\uc0\u51221 \u47568  \u49556 \u51649 \u54620 ","\u51088 \u50672 \u49828 \u47084 \u50868 ","\u45231 \u51061 \u51008 ","\u49332 \u51677  \u48520 \u54200 \u54620 ","\u54217 \u50728 \u54644  \u48372 \u51060 \u45716 ","\u44032 \u45140  \u44480 \u52270 \u51008 ","\u44032 \u45140  \u50883 \u44596 ","\u49332 \u51677  \u49436 \u45720 \u54620 ",\
+                "\uc0\u49332 \u51677  \u46384 \u46907 \u54620 ","\u47801 \u49884  \u54217 \u48276 \u54620 ","\u47801 \u49884  \u49556 \u51649 \u54620 ","\u49556 \u51649 \u54644 \u49436  \u48124 \u47581 \u54620 ","\u44032 \u45140  \u51652 \u49900 \u51064 "\
+            ],\
+\
+            noun: [\
+                "\uc0\u49352 \u48317 \u51008 ","\u44536 \u47548 \u51088 \u45716 ","\u44592 \u50613 \u51008 ","\u48148 \u46988 \u51060 ","\u51092 \u49345 \u51008 ","\u48731 \u51060 ","\u50976 \u47161 \u51060 ","\u47676 \u51648 \u44032 ","\u49884 \u44036 \u51008 ","\u44256 \u50836 \u44032 ",\
+                "\uc0\u54028 \u54200 \u51060 ","\u50872 \u51020 \u51060 ","\u49704 \u44208 \u51060 ","\u44396 \u47492 \u51060 ","\u50620 \u47337 \u51060 ","\u44144 \u51667 \u47568 \u51060 ","\u49548 \u51020 \u51060 ","\u50668 \u48177 \u51060 ","\u45804 \u48731 \u51060 ","\u44536 \u45720 \u51060 ",\
+                "\uc0\u54028 \u46020 \u45716 ","\u49900 \u50672 \u51060 ","\u55124 \u51201 \u51060 ","\u44592 \u47197 \u51008 ","\u51312 \u44033 \u51008 ","\u44256 \u53685 \u51060 ","\u50728 \u44592 \u44032 ","\u51077 \u44608 \u51060 ","\u45209 \u50685 \u51060 ","\u55120 \u47492 \u51060 ",\
+                "\uc0\u51652 \u49892 \u51008 ","\u47560 \u51020 \u51008 ","\u48156 \u51088 \u44397 \u51060 ","\u48317 \u51060 ","\u54620 \u49704 \u51060 ","\u44256 \u48177 \u51060 ","\u51109 \u47732 \u51060 ","\u50620 \u44404 \u51060 ","\u54413 \u44221 \u51008 ","\u52840 \u47925 \u51060 ",\
+                "\uc0\u45576 \u47932 \u51008 ","\u47700 \u50500 \u47532 \u44032 ","\u54728 \u49345 \u51008 ","\u52285 \u47928 \u51060 ","\u49552 \u45149 \u51060 ","\u48164 \u51060 ","\u45230 \u51060 ","\u47784 \u47000 \u44032 ","\u54028 \u46041 \u51060 ","\u44592 \u50613 \u46308 \u51060 ",\
+                "\uc0\u51221 \u48372 \u45716 ","\u49828 \u53664 \u47532 \u45716 ","\u45236 \u47084 \u54000 \u48652 \u45716 ","\u47785 \u49548 \u47532 \u44032 ","\u45800 \u50612 \u45716 ","\u51312 \u47749 \u51060 ","\u51092 \u54644 \u44032 ","\u55124 \u46308 \u47548 \u51060 ","\u54588 \u47196 \u44032 ","\u50864 \u50872 \u51060 ",\
+                "\uc0\u49345 \u52376 \u44032 ","\u44592 \u45824 \u44032 ","\u54616 \u47336 \u45716 ","\u48164 \u44277 \u44592 \u44032 ","\u54805 \u52404 \u44032 ","\u52628 \u50613 \u51008 ","\u44228 \u51208 \u51060 ","\u51648 \u54217 \u49440 \u51060 ","\u45432 \u51060 \u51592 \u44032 ","\u49888 \u54840 \u44032 ",\
+                "\uc0\u50508 \u47548 \u51060 ","\u48712 \u52856 \u51060 ","\u55120 \u47536  \u51077 \u44608 \u51060 ","\u51648 \u45208 \u44036  \u51109 \u47732 \u51060 ","\u48512 \u49436 \u51652  \u47928 \u51109 \u51060 ","\u51089 \u51008  \u53960 \u51060 ","\u55148 \u48120 \u54620  \u51109 \u47732 \u51060 ","\u45224 \u44200 \u51652  \u47568 \u51060 ",\
+                "\uc0\u44592 \u50613 \u51032  \u44749 \u51656 \u51060 ","\u55120 \u47536  \u47568 \u51060 ","\u50612 \u46176 \u51060 ","\u49552 \u49345 \u46108  \u48731 \u51060 ","\u44032 \u48316 \u50868  \u48156 \u51088 \u44397 \u51060 ","\u48520 \u50756 \u51204 \u54620  \u50616 \u50612 \u44032 ","\u44256 \u50836 \u54620  \u53960 \u51060 ",\
+                "\uc0\u52964 \u54588 \u44032 ","\u51648 \u44049 \u51060 ","\u54648 \u46300 \u54256 \u51060 ","\u51060 \u50612 \u54256 \u51060 ","\u52293 \u49345 \u51060 ","\u46972 \u47732 \u51060 ","\u51648 \u54616 \u52384 \u51060 ","\u48260 \u49828 \u44032 ","\u52636 \u44540 \u44600 \u51060 ","\u53748 \u44540 \u44600 \u51060 ",\
+                "\uc0\u50864 \u49328 \u51060 ","\u48744 \u47000 \u44032 ","\u50577 \u47568 \u51060 ","\u47560 \u50864 \u49828 \u44032 ","\u48148 \u45797 \u51060 ","\u52285 \u47928 \u51060 ","\u50628 \u47560 \u44032 ","\u50500 \u48736 \u44032 ","\u52828 \u44396 \u44032 ","\u46041 \u45348 \u44032 ",\
+                "\uc0\u50416 \u47112 \u44592 \u44032 ","\u51109 \u48148 \u44396 \u45768 \u44032 ","\u48176 \u45804 \u51020 \u49885 \u51060 ","\u53076 \u53944 \u44032 ","\u45432 \u53944 \u48513 \u51060 ","\u52649 \u51204 \u44592 \u44032 ","\u50528 \u54540 \u50892 \u52824 \u44032 ","TV\u44032 ","\u47532 \u47784 \u52968 \u51060 ","\u45257 \u51109 \u44256 \u44032 ",\
+                "\uc0\u45804 \u47141 \u51060 ","\u50508 \u46988 \u51060 ","\u47928 \u51088 \u44032 ","\u48120 \u49464 \u47676 \u51648 \u44032 ","\u52852 \u54168 \u44032 ","\u49884 \u44228 \u44032 ","\u44277 \u52293 \u51060 ","\u49380 \u50892 \u44592 \u44032 ","\u48727 \u47932 \u51060 ","\u50500 \u52840 \u48165 \u51060 ",\
+                "\uc0\u51200 \u45377 \u51060 ","\u44036 \u49885 \u51060 ","\u51060 \u48520 \u51060 ","\u48288 \u44060 \u44032 ","\u49689 \u51228 \u44032 ","\u50689 \u49688 \u51613 \u51060 ","\u53469 \u48176 \u44032 ","\u49436 \u46989 \u51060 ","\u48169 \u48148 \u45797 \u51060 ","\u51665  \u50526  \u44600 \u51060 ",\
+                "\uc0\u54200 \u51032 \u51216 \u51060 ","\u49324 \u46988 \u46308  \u49548 \u47532 \u44032 ","\u52636 \u51077 \u47928 \u51060 ","\u52980 \u54504 \u53552  \u54868 \u47732 \u51060 ","\u44256 \u50577 \u51060 \u44032 ","\u44053 \u50500 \u51648 \u44032 ","\u50500 \u51060 \u49828 \u53356 \u47548 \u51060 ","\u52488 \u53084 \u47551 \u51060 ","\u46972 \u46356 \u50724 \u44032 ",\
+                "\uc0\u47928 \u44256 \u47532 \u44032 ","\u49552 \u51204 \u46321 \u51060 ","\u53216 \u54256 \u51060 ","\u50689 \u54868 \u54364 \u44032 ","\u45824 \u54805 \u47560 \u53944 \u44032 ","\u52397 \u49548 \u44592 \u44032 ","\u50557 \u44397 \u51060 ","\u44228 \u45800 \u51060 ","\u50648 \u47532 \u48288 \u51060 \u53552 \u44032 ","\u54252 \u49828 \u53944 \u51079 \u51060 ",\
+                "\uc0\u46020 \u50612 \u46973 \u51060 ","\u52852 \u47700 \u46972 \u44032 ","\u47928 \u53960 \u48148 \u46988 \u51060 ","\u49464 \u53441 \u44592 \u44032 ","\u45252 \u48708 \u44032 ","\u49688 \u51200 \u53685 \u51060 ","\u50577 \u52824 \u52981 \u51060 ","\u54868 \u51109 \u51648 \u44032 ","\u51333 \u51060 \u52981 \u51060 ","\u49328 \u52293 \u44600 \u51060 ",\
+                "\uc0\u47680 \u54000 \u53485 \u51060 ","USB\u44032 ","\u47560 \u49828 \u53356 \u44032 ","\u54000 \u49800 \u44032 ","\u49660 \u54028 \u44032 ","\u53568 \u48660 \u47084 \u44032 ","\u48516 \u47532 \u49688 \u44144 \u51109 \u51060 ","\u44256 \u47924 \u51109 \u44049 \u51060 ","\u51204 \u46321  \u49828 \u50948 \u52824 \u44032 ","\u48373 \u46020  \u49548 \u47532 \u44032 ",\
+                "\uc0\u49884 \u47532 \u50620 \u51060 ","\u50864 \u50976 \u44032 ","\u48148 \u45208 \u45208 \u44032 ","\u52981 \u46972 \u47732 \u51060 ","\u46020 \u49884 \u46973 \u51060 ","\u49688 \u44148 \u51060 ","\u49440 \u54413 \u44592 \u44032 ","\u45212 \u48169 \u51060 ","\u49836 \u47532 \u54140 \u44032 ","\u49660 \u54609 \u48177 \u51060 ",\
+                "\uc0\u48176 \u53552 \u47532 \u44032 ","\u49552 \u47785 \u49884 \u44228 \u44032 ","\u52852 \u46300 \u51648 \u44049 \u51060 ","\u51648 \u54616 \u49345 \u44032 \u44032 ","\u51008 \u54665 \u51060 ","\u48260 \u44144 \u51665 \u51060 ","\u48533 \u50612 \u48757 \u51060 ","\u44600 \u44256 \u50577 \u51060 \u44032 ","\u47928  \u50526  \u53469 \u48176 \u44032 "\
+            ],\
+\
+            verb: [\
+                "\uc0\u49324 \u46972 \u51652 \u45796 .","\u55128 \u47084 \u44036 \u45796 .","\u46504 \u50612 \u51652 \u45796 .","\u48264 \u51256 \u44036 \u45796 .","\u45433 \u50500 \u45236 \u47536 \u45796 .","\u51648 \u50892 \u51652 \u45796 .","\u48512 \u49436 \u51652 \u45796 .","\u55145 \u50612 \u51652 \u45796 .",\
+                "\uc0\u50872 \u47536 \u45796 .","\u51104 \u44596 \u45796 .","\u46504 \u47536 \u45796 .","\u44032 \u46972 \u50505 \u45716 \u45796 .","\u55064 \u48156 \u46108 \u45796 .","\u55124 \u46308 \u47536 \u45796 .","\u47688 \u52656 \u48260 \u47536 \u45796 .","\u49828 \u47728 \u46304 \u45796 .","\u50872 \u47673 \u51064 \u45796 .",\
+                "\uc0\u51312 \u44033 \u45212 \u45796 .","\u44592 \u50872 \u50612 \u51652 \u45796 .","\u55120 \u47140 \u51652 \u45796 .","\u49324 \u44536 \u46972 \u46304 \u45796 .","\u50693 \u50612 \u51652 \u45796 .","\u50143 \u50500 \u51652 \u45796 .","\u54140 \u51256 \u45208 \u44036 \u45796 .","\u46244 \u51665 \u55180 \u45796 .","\u51104 \u49885 \u54620 \u45796 .",\
+                "\uc0\u44040 \u54588 \u47484  \u51075 \u45716 \u45796 .","\u48148 \u47000 \u51652 \u45796 .","\u46104 \u44048 \u44592 \u51648  \u50506 \u45716 \u45796 .","\u49324 \u46972 \u51256 \u44036 \u45796 .","\u55120 \u47140 \u51256 \u44036 \u45796 .","\u48708 \u50892 \u51652 \u45796 .","\u46504 \u50612 \u51256 \u45208 \u44036 \u45796 .","\u49436 \u49457 \u51064 \u45796 .","\u45336 \u52432 \u55120 \u47480 \u45796 .",\
+                "\uc0\u47673 \u45716 \u45796 .","\u47560 \u49888 \u45796 .","\u45589 \u45716 \u45796 .","\u51068 \u50612 \u45212 \u45796 .","\u50491 \u45716 \u45796 .","\u45804 \u47536 \u45796 .","\u44151 \u45716 \u45796 .","\u50505 \u45716 \u45796 .","\u45580 \u47084 \u48376 \u45796 .","\u53020 \u48376 \u45796 .",\
+                "\uc0\u44732 \u48260 \u47536 \u45796 .","\u45139 \u51064 \u45796 .","\u50489 \u45716 \u45796 .","\u55128 \u47536 \u45796 .","\u49444 \u44144 \u51648 \u54620 \u45796 .","\u48744 \u47000 \u54620 \u45796 .","\u51469 \u45716 \u45796 .","\u48260 \u47536 \u45796 .","\u51221 \u47532 \u54620 \u45796 .","\u51217 \u45716 \u45796 .",\
+                "\uc0\u52313 \u44596 \u45796 .","\u51082 \u45716 \u45796 .","\u52237 \u45716 \u45796 .","\u48372 \u45240 \u45796 .","\u51069 \u45716 \u45796 .","\u51201 \u45716 \u45796 .","\u51077 \u45716 \u45796 .","\u48279 \u45716 \u45796 .","\u51104 \u44540 \u45796 .","\u50676 \u50612 \u48376 \u45796 .",\
+                "\uc0\u46028 \u47536 \u45796 .","\u47564 \u51652 \u45796 .","\u45336 \u44596 \u45796 .","\u44160 \u49353 \u54620 \u45796 .","\u45803 \u45716 \u45796 .","\u50883 \u45716 \u45796 .","\u54616 \u54408 \u54620 \u45796 .","\u44592 \u51648 \u44060  \u53024 \u45796 .","\u45580 \u47536 \u45796 .","\u52964 \u54588 \u47484  \u53444 \u45796 .",\
+                "\uc0\u48176 \u45804 \u48155 \u45716 \u45796 .","\u52649 \u51204 \u54620 \u45796 .","\u51648 \u50868 \u45796 .","\u51200 \u51109 \u54620 \u45796 .","\u46916 \u50868 \u45796 .","\u51221 \u51648 \u54620 \u45796 .","\u46244 \u46028 \u50500 \u48376 \u45796 .","\u55124 \u46304 \u45796 .","\u47568 \u47536 \u45796 .","\u45336 \u50612 \u51652 \u45796 .",\
+                "\uc0\u52636 \u44540 \u54620 \u45796 .","\u53748 \u44540 \u54620 \u45796 .","\u44592 \u47197 \u54620 \u45796 .","\u47700 \u47784 \u54620 \u45796 .","\u54872 \u48520 \u54620 \u45796 .","\u45124 \u51201 \u51064 \u45796 .","\u45580 \u47084 \u48376 \u45796 .","\u48128 \u50612 \u45347 \u45716 \u45796 .","\u44732 \u45236 \u48376 \u45796 .","\u45139 \u50668 \u47673 \u45716 \u45796 .",\
+                "\uc0\u55124 \u46308 \u50612 \u48376 \u45796 .","\u50424 \u50612 \u45812 \u45716 \u45796 .","\u44256 \u48124 \u54620 \u45796 .","\u48120 \u47340 \u45796 .","\u53909 \u44200 \u45240 \u45796 .","\u50672 \u44208 \u54620 \u45796 .","\u48516 \u47532 \u54620 \u45796 .","\u49464 \u50868 \u45796 .","\u45589 \u55180 \u45796 .","\u47672 \u47943 \u44144 \u47536 \u45796 .",\
+                "\uc0\u49828 \u53356 \u47204 \u54620 \u45796 .","\u52897 \u52376 \u54620 \u45796 .","\u48537 \u50668 \u45347 \u45716 \u45796 .","\u50948 \u47196  \u50732 \u47536 \u45796 .","\u50500 \u47000 \u47196  \u45236 \u47536 \u45796 .","\u45336 \u44596 \u45796 .","\u44148 \u45320 \u46836 \u45796 .","\u51648 \u53020 \u48376 \u45796 .","\u55128 \u47140 \u48376 \u45796 .","\u45180 \u50892  \u45347 \u45716 \u45796 ."\
+            ]\
+        \};\
+\
+        const alertMessages = \{\
+            send: ["\uc0\u51060 \u44148  \'91\u51060 \u50556 \u44592 \'92\u51064 \u44032 \u50836 , \u50500 \u45768 \u47732  \'91\u51613 \u44144 \'92\u51064 \u44032 \u50836 ?", "\u49324 \u46972 \u51656  \u44163 \u51012  \u50508 \u47732 \u49436  \u50780  \u45224 \u44592 \u45208 \u50836 ?", "\u51060  \u49692 \u44036 \u51012  \u44592 \u47197 \u54616 \u44256  \u49910 \u51008 \u44032 \u50836 , \u50500 \u45768 \u47732  \u49548 \u48708 \u49884 \u53412 \u44256  \u49910 \u51008 \u44032 \u50836 ?", "\u45817 \u49888 \u51032  \u49334 \u51012  \u48372 \u50668 \u51452 \u45716  \u44148 \u44032 \u50836 , \u50500 \u45768 \u47732  \u51060 \u48120 \u51648  \u54620  \u51312 \u44033 \u51012  \u54032 \u47588 \u54616 \u45716  \u44148 \u44032 \u50836 ?", "\u45817 \u49888 \u51008  \u51648 \u44552  \'91\u47568 \u54616 \u45716 \'92 \u44148 \u44032 \u50836 , \u50500 \u45768 \u47732  \'91\u50629 \u47196 \u46300 \'92\u54616 \u45716  \u44148 \u44032 \u50836 ?", "\u51060 \u44148  \u45817 \u49888 \u51032  \u49436 \u49324 \u51064 \u44032 \u50836 , \u50500 \u45768 \u47732  \u48152 \u51677 \u54616 \u44256  \u49324 \u46972 \u51656  \u49828 \u53664 \u47532 \u51064 \u44032 \u50836 ?", "\u51060  \u51109 \u47732 \u51008  \u45817 \u49888 \u50640 \u44172  \u50612 \u46500  \u51032 \u48120 \u44032  \u51080 \u45208 \u50836 \'85 \u50500 \u45768 \u47732  \u50630 \u45208 \u50836 ?", "\u45572 \u44032  \u51060 \u44152  \u48400 \u51452 \u47732  \u51339 \u44192 \u45208 \u50836 ? \u50780 \u51424 ?", "\u51060 \u50556 \u44592 \u51064 \u44032 , \u51221 \u48372 \u51064 \u44032 .", "\u50732 \u47548 \u51008  \u44263  \u49548 \u47736 \u51077 \u45768 \u45796 . \u44316 \u52270 \u45208 \u50836 ?", "\u51060 \u53664 \u47197  \u49789 \u44172  \u44277 \u50976 \u54644 \u46020  \u46104 \u45716  \u44592 \u50613 \u51064 \u44032 \u50836 ?", "\u48712  \u54532 \u47112 \u51076 \u50640  \u49353 \u51012  \u52832 \u54620 \u45796 \u44256  \u51060 \u50556 \u44592 \u44032  \u46104 \u51648 \u45716  \u50506 \u50500 \u50836 ?", "\u45817 \u49888 \u51060  \u45712 \u45184  \u44048 \u51221 \u51008  \u50668 \u44592  \u51080 \u45208 \u50836 ?"],\
+            bf: ["\uc0\u51221 \u47568  \u44536 \u46308 \u47564  \u48372 \u44600  \u50896 \u54616 \u45716  \u44148 \u44032 \u50836 ?", "\u45817 \u49888 \u51060  \u49704 \u44592 \u44256  \u49910 \u51008  \u44148  \u47924 \u50631 \u51060 \u51424 ?", "\u51652 \u51676  \u48708 \u48128 \u51060 \u46972 \u47732 , \u50780  \u50732 \u47532 \u45208 \u50836 ?", "\u51060 \u44152  \u48372 \u50668 \u51468 \u51004 \u47196 \u50024  \u47924 \u50631 \u51012  \u54869 \u51064 \u54616 \u44256  \u49910 \u45208 \u50836 ?", "\u45817 \u49888 \u51032  \u47560 \u51020 \u51008  \u45572 \u44396 \u51032  \u49884 \u49440 \u51012  \u54693 \u54616 \u45208 \u50836 ?", "\u51060 \u44148  \u49704 \u44608 \u51064 \u44032 \u50836 , \u49440 \u53469 \u51201  \u45432 \u52636 \u51064 \u44032 \u50836 ?", "\u51221 \u47568  \u44032 \u44620 \u50868  \u49324 \u51060 \u50640 \u44172 \u47564 ?", "\u48708 \u48128 \u51008  \u44277 \u50976 \u46104 \u45716  \u49692 \u44036  \u49324 \u46972 \u51665 \u45768 \u45796 .", "\u51060 \u44148  \u52828 \u48128 \u54632 \u51064 \u44032 , \u54596 \u53552 \u47553 \u51064 \u44032 ?", "\u45817 \u49888 \u51060  \u44048 \u52628 \u44256  \u49910 \u51008  \u44148  \u54868 \u47732  \u48150 \u51068 \u51648 \u46020 ."],\
+            x: ["\uc0\u51221 \u47568  \u45149 \u45236 \u44256  \u49910 \u51008 \u44032 \u50836 ?", "\u48372 \u51648  \u50506 \u51008  \u44163 \u51008  \u50630 \u45912  \u44163 \u51060  \u46104 \u45208 \u50836 ?", "\u45817 \u49888 \u51008  \u51060 \u50556 \u44592 \u47484  \u45803 \u45208 \u50836 , \u50500 \u45768 \u47732  \u51221 \u48372 \u47564  \u45803 \u45208 \u50836 ?", "\u51060  \u51109 \u47732 \u51008  \u44536 \u45285  \u49324 \u46972 \u51256 \u46020  \u44316 \u52270 \u51012 \u44620 \u50836 ?", "\u45803 \u55180  \u46244 \u50640 \u46020  \u45817 \u49888  \u50504 \u50640  \u45224 \u45716  \u44148  \u47924 \u50631 \u51064 \u44032 \u50836 ?", "\u45803 \u50500 \u46020  \u51082 \u55176 \u51648  \u50506 \u45716  \u44148  \u47924 \u50631 \u51068 \u44620 \u50836 ?", "\u45817 \u49888 \u51008  \u51652 \u51676  \u44048 \u51221 \u51012  \u45803 \u45716  \u45936  \u51061 \u49689 \u54644 \u51256  \u51080 \u51648  \u50506 \u45208 \u50836 ?", "\u45803 \u55176 \u47732  \u49324 \u46972 \u51256 \u50836 . \u44316 \u52270 \u45208 \u50836 ?", "\u51648 \u44552  \u45803 \u55176 \u45716  \u44148  \u51060 \u50556 \u44592 \u51068 \u44620 \u50836 , \u45817 \u49888 \u51068 \u44620 \u50836 ?"],\
+            t: ["\uc0\u47568 \u54616 \u44256  \u49910 \u51008  \u44148  \u47924 \u50631 \u51064 \u44032 \u50836 ?", "\u51060  \u47928 \u51109 \u51008  \u45817 \u49888 \u50640 \u44172  \u45224 \u51012 \u44620 \u50836 ?", "\u51060  \u45800 \u50612 \u45716  \u45572 \u44396 \u47484  \u54693 \u54616 \u45208 \u50836 ?", "\u51060  \u44544 \u51060  \u45817 \u49888 \u51032  \u49436 \u49324 \u51032  \u51068 \u48512 \u44032  \u46112 \u44620 \u50836 ?", "\u50416 \u51648  \u50506 \u50500 \u46020  \u45224 \u45716  \u51060 \u50556 \u44592 \u44032  \u51080 \u51424 .", "\u51089 \u49457 \u54616 \u45716  \u49692 \u44036  \u49324 \u46972 \u51656  \u49688 \u46020  \u51080 \u49845 \u45768 \u45796 . \u44316 \u52270 \u45208 \u50836 ?"],\
+            draw: ["\uc0\u45817 \u49888 \u51060  \u44536 \u47532 \u44256  \u49910 \u51008  \u44148  \u49692 \u44036 \u51064 \u44032 \u50836 , \u44048 \u51221 \u51064 \u44032 \u50836 ?", "\u51060  \u49440  \u54616 \u45208 \u50640  \u50612 \u46500  \u47560 \u51020 \u51012  \u49704 \u44592 \u45208 \u50836 ?", "\u44536 \u47548 \u51008  \u45224 \u51648  \u50506 \u50500 \u50836 . \u47560 \u51020 \u51008  \u45224 \u44192 \u51424 ."],\
+            emoji: ["\uc0\u44048 \u51221 \u51012  \u51060 \u47784 \u51648 \u47196  \u52649 \u48516 \u55176  \u54364 \u54788 \u54664 \u45796 \u44256  \u45712 \u45180 \u45208 \u50836 ?", "\u44592 \u54840 \u44032  \u45817 \u49888 \u51032  \u47560 \u51020 \u51012  \u45824 \u49888 \u54644 \u51460 \u44620 \u50836 ?", "\u45817 \u49888 \u51032  \u51060 \u50556 \u44592 \u47484  \u51060 \u47784 \u51648 \u44032  \u50836 \u50557 \u54644 \u46020  \u44316 \u52270 \u45208 \u50836 ?"],\
+            music: ["\uc0\u45572 \u44396 \u51032  \u44048 \u51221 \u50640  \u44592 \u45824 \u44256  \u51080 \u45208 \u50836 ?", "\u45817 \u49888 \u51032  \u49436 \u49324 \u45716  \u48176 \u44221 \u51020 \u50501  \u50630 \u51060 \u45716  \u50756 \u49457 \u46104 \u51648  \u50506 \u45208 \u50836 ?", "\u45432 \u47000 \u44032  \u47560 \u51020 \u51012  \u45824 \u49888 \u54644 \u51452 \u47732  \u54200 \u54616 \u51424 . \u54616 \u51648 \u47564  \u45817 \u49888 \u51032  \u51060 \u50556 \u44592 \u45716 \u50836 ?"],\
+            sparkle: ["\uc0\u47924 \u50631 \u51012  \u44048 \u52628 \u44256  \u49910 \u51008 \u44032 \u50836 ?", "\u51060  \u54596 \u53552 \u45716  \u45817 \u49888 \u51012  \u44984 \u48120 \u45208 \u50836 , \u49704 \u44592 \u45208 \u50836 ?", "\u51060 \u50980 \u51008  \u45908  \u49440 \u47749 \u54644 \u51648 \u44256 , \u45817 \u49888 \u51008  \u55120 \u47140 \u51665 \u45768 \u45796 .", "\u54596 \u53552 \u47196 \u45716  \u49436 \u49324 \u44032  \u47564 \u46308 \u50612 \u51648 \u51648  \u50506 \u50500 \u50836 ."]\
+        \};\
+\
+        let imgIndex = 0;\
+        let audioCtx;\
+        const photoDisplay = document.getElementById('photo-display');\
+        const textOutput = document.getElementById('text-output');\
+        const alertBox = document.getElementById('global-alert');\
+        const alertMessageText = document.getElementById('alert-message-text');\
+        const fullStaticOverlay = document.getElementById('full-static-overlay');\
+\
+        function randomItem(arr) \{ return arr[Math.floor(Math.random() * arr.length)]; \}\
+        function createNonsense() \{ return `$\{randomItem(words.adj)\} $\{randomItem(words.noun)\} $\{randomItem(words.verb)\} `; \}\
+\
+        function triggerAlert(key) \{\
+            const msgs = alertMessages[key];\
+            if(!msgs) return;\
+            \
+            alertMessageText.innerText = randomItem(msgs);\
+            alertBox.classList.add('alert-active');\
+            \
+            if(audioCtx) \{\
+                const now = audioCtx.currentTime;\
+                const duration = 0.6;\
+                const osc1 = audioCtx.createOscillator();\
+                const gain1 = audioCtx.createGain();\
+                osc1.type = 'square';\
+                osc1.frequency.setValueAtTime(853, now);\
+                gain1.gain.setValueAtTime(0.1, now);\
+                osc1.connect(gain1);\
+                gain1.connect(audioCtx.destination);\
+                osc1.start(now);\
+                osc1.stop(now + duration);\
+\
+                const osc2 = audioCtx.createOscillator();\
+                const gain2 = audioCtx.createGain();\
+                osc2.type = 'square';\
+                osc2.frequency.setValueAtTime(960, now);\
+                gain2.gain.setValueAtTime(0.1, now);\
+                osc2.connect(gain2);\
+                gain2.connect(audioCtx.destination);\
+                osc2.start(now);\
+                osc2.stop(now + duration);\
+            \}\
+\
+            setTimeout(() => \{\
+                alertBox.classList.remove('alert-active');\
+            \}, 800); \
+        \}\
+\
+        function playTypeSound() \{\
+            if(!audioCtx) return;\
+            const osc = audioCtx.createOscillator();\
+            const gain = audioCtx.createGain();\
+            osc.frequency.setValueAtTime(800 + Math.random()*300, audioCtx.currentTime); \
+            gain.gain.setValueAtTime(0.05, audioCtx.currentTime);\
+            gain.gain.exponentialRampToValueAtTime(0.001, audioCtx.currentTime + 0.03); \
+            osc.connect(gain);\
+            gain.connect(audioCtx.destination);\
+            osc.start();\
+            osc.stop(audioCtx.currentTime + 0.03);\
+        \}\
+\
+        function startApp() \{\
+            document.getElementById('overlay').style.display = 'none';\
+            audioCtx = new (window.AudioContext || window.webkitAudioContext)();\
+            updateImage();\
+            typeLoop();\
+            setInterval(updateImage, 200);\
+            randomStaticLoop(); \
+        \}\
+\
+        function updateImage() \{\
+            if (images.length === 0) return;\
+            const url = images[imgIndex % images.length];\
+            photoDisplay.style.backgroundImage = `url('$\{url\}')`;\
+            imgIndex++;\
+        \}\
+\
+        function triggerFullStatic() \{\
+            fullStaticOverlay.classList.add('static-active');\
+            setTimeout(() => \{\
+                fullStaticOverlay.classList.remove('static-active');\
+            \}, 300 + Math.random() * 500);\
+        \}\
+\
+        function randomStaticLoop() \{\
+            const nextTime = Math.random() * 10000 + 5000;\
+            setTimeout(() => \{\
+                if(Math.random() > 0.7) triggerFullStatic();\
+                randomStaticLoop();\
+            \}, nextTime);\
+        \}\
+\
+        function typeLoop() \{\
+            const sentence = createNonsense();\
+            let charIdx = 0;\
+\
+            function nextChar() \{\
+                if (charIdx < sentence.length) \{\
+                    const char = sentence.charAt(charIdx);\
+                    const span = document.createElement('span');\
+                    span.innerText = char;\
+\
+                    const fontStyles = ['font-inter', 'font-noto-sans', 'font-noto-serif', 'font-nanum-pen', 'font-gowun'];\
+                    span.classList.add(randomItem(fontStyles));\
+\
+                    const weights = ['weight-light', 'weight-normal', 'weight-bold'];\
+                    span.classList.add(randomItem(weights));\
+\
+                    if (Math.random() < 0.3) span.classList.add('style-italic');\
+\
+                    const randomSize = 0.9 + Math.random() * 0.4;\
+                    span.style.fontSize = `$\{randomSize\}em`;\
+\
+                    if (Math.random() < 0.1) \{\
+                        span.style.marginLeft = `-$\{Math.random() * 15 + 5\}px`;\
+                    \}\
+                    \
+                    textOutput.appendChild(span);\
+                    playTypeSound();\
+                    \
+                    charIdx++;\
+                    setTimeout(nextChar, 10 + Math.random() * 40); \
+                \} else \{\
+                    setTimeout(typeLoop, 50); \
+                \}\
+            \}\
+            nextChar();\
+        \}\
+    </script>\
+</body>\
+</html>}
